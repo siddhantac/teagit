@@ -49,7 +49,7 @@ func (m model) View() string {
 }
 
 func main() {
-	var defaultLogNum = 5
+	var defaultLogNum = 10
 
 	var logNum *int
 	logNum = flag.Int("n", defaultLogNum, "no. of logs to return")
