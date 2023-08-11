@@ -14,7 +14,7 @@ func gitBranch() string {
 	cmd := exec.Command("git", "rev-parse", "--abbrev-ref", "HEAD")
 	result, err := cmd.CombinedOutput()
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("%s\n%v", result, err))
 	}
 	scanner := bufio.NewScanner(bytes.NewBuffer(result))
 	scanner.Scan()
@@ -25,7 +25,7 @@ func gitLog(num int) []list.Item {
 	cmd := exec.Command("git", "log", "--oneline", fmt.Sprintf("-%d", num), "--pretty=%s;%h;%an;%cr;%d")
 	result, err := cmd.CombinedOutput()
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("%s\n%v", result, err))
 	}
 
 	items := make([]list.Item, 0)
