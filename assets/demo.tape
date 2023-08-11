@@ -1,6 +1,6 @@
 Output assets/demo.gif
 
-Type@300ms "./teagit" Sleep 500ms Enter
+Type@100ms "tg" Sleep 500ms Enter
 Sleep 3s
 Down
 Sleep 1s
