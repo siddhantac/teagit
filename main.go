@@ -51,12 +51,20 @@ func (m model) View() string {
 func main() {
 	var defaultLogNum = 10
 
-	var logNum *int
+	var (
+		logNum *int
+		log    *bool
+		pull   *string
+	)
 	logNum = flag.Int("n", defaultLogNum, "no. of logs to return")
+	log = flag.Bool("log", false, "show git log")
+	pull = flag.String("pull", "master", "git pull")
 	flag.Parse()
 
+	var m tea.Model
+
 	items := gitLog(*logNum)
-	m := model{list: list.New(items, list.NewDefaultDelegate(), 0, 0)}
+	m = model{list: list.New(items, list.NewDefaultDelegate(), 0, 0)}
 	m.list.Title = gitBranch()
 
 	p := tea.NewProgram(m)
